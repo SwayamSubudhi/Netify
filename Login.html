@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFTickets Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Animate.css for animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-container {
+      width: 100%;
+      max-width: 1100px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+      background: #111;
+    }
+    .image-box {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      min-height: 200px;
+    }
+    .image-box img {
+      max-width: 150%;
+      max-height: 140%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(125, 60, 255, 0.7);
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      animation: float 3s ease-in-out infinite;
+    }
+    .image-box img.active {
+      opacity: 1;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+    .login-box {
+      padding: 40px 30px;
+    }
+    .login-box h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 25px;
+      color: #7d3cff;
+    }
+    .login-box h2 {
+      margin-bottom: 30px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .login-box .form-control {
+      background: #222;
+      border: none;
+      color: #fff;
+    }
+    .login-box .form-control:focus {
+      background: #333;
+      box-shadow: none;
+      color: #fff;
+    }
+    /* Brighter placeholders */
+    .login-box .form-control::placeholder {
+      color: #ddd;
+      opacity: 1;
+    }
+    .login-box button {
+      background: #7d3cff;
+      border: none;
+      transition: 0.3s;
+    }
+    .login-box button:hover {
+      background: #9b59ff;
+    }
+    /* Brighter signup text */
+    .signup-text {
+      color: #eee;
+      font-weight: 500;
+    }
+    .signup-text a {
+      color: #9b59ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .signup-text a:hover {
+      text-decoration: underline;
+      color: #bb86ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container login-container animate__animated animate__fadeInUp">
+    <div class="row g-0">
+      <!-- Left Image (top on mobile) -->
+      <div class="col-lg-5 col-md-6 col-12 image-box">
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvp2ch1Mk8CdhMl41bYJJdwL5aa8qXSXyRxQ&s" class="active" alt="NFT Ticket 1">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLvpsyLOtC5bvQhdYuCxNLgidzyQhwX_y-rw&s" alt="NFT Ticket 2">
+
+              </div>
+
+      <!-- Right Login Box (bottom on mobile) -->
+      <div class="col-lg-7 col-md-6 col-12 login-box">
+        <h1>"The Future of Tickets is On-Chain"</h1>
+        <h2>Login to Netify</h2>
+        <form>
+          <div class="mb-3">
+            <input type="email" class="form-control form-control-lg" placeholder="Email address">
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control form-control-lg" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-lg w-100 text-white">Login</button>
+        </form>
+        <p class="mt-4 text-center signup-text">
+          Don’t have an account?<a href="signup.html">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Image slideshow logic
+    const images = document.querySelectorAll(".image-box img");
+    let current = 0;
+
+    // Show the first image immediately
+    images[current].classList.add("active");
+
+    setInterval(() => {
+      images[current].classList.remove("active");
+      current = (current + 1) % images.length;
+      images[current].classList.add("active");
+    }, 4000); // change every 4 seconds
+  </script>
+</body>
+</html>
